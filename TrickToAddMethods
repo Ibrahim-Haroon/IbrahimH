@@ -1,0 +1,57 @@
+//
+//  main.c
+//  simply_ObjecOriented_implementation_C
+//
+//  Created by Ibrahim Haroon on 1/7/23.
+//
+
+#include <stdio.h>
+
+typedef struct typeInt{
+    int first_num;
+    int second_num;
+    void (*add)(const struct typeInt*);
+    void (*subtract)(const struct typeInt*);
+    void (*multiply)(const struct typeInt*);
+    void (*divide)(const struct typeInt*);
+    void (*max)(const struct typeInt*);
+    void (*min)(const struct typeInt*);
+}Int;
+
+void add(const Int* a) {
+    printf("%d\n", a -> first_num + a -> second_num);
+}
+
+void subtract(const Int* a) {
+    printf("%d\n", a -> first_num - a -> second_num);
+}
+
+void multiply(const Int* a) {
+    printf("%d\n", a -> first_num * a -> second_num);
+}
+
+void divide(const Int* a) {
+    printf("%d\n", a -> first_num / a -> second_num);
+}
+
+void max(const Int* a) {
+    printf("max element -> %d\n", a -> first_num > a -> second_num ? a -> first_num : a -> second_num);
+}
+
+void min(const Int* a) {
+    printf("min element -> %d\n", a -> first_num < a -> second_num ? a -> first_num : a -> second_num);
+}
+
+int main() {
+    Int a = {5, 6, add, subtract, multiply, divide, max, min};
+    a.add(&a);
+    a.subtract(&a);
+    a.multiply(&a);
+    a.divide(&a);
+    a.max(&a);
+    a.min(&a);
+    
+    return 0;
+}
+
+
