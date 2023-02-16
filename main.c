@@ -1,16 +1,31 @@
 //
 //  main.c
-//  countingSort
+//  trie_library
 //
-//  Created by Ibrahim Haroon on 1/31/23.
-//
+//  Created by Ibrahim Haroon on 2/14/23.
+/*
+ Trie* init_trie(void);
+ TrieNode* createTrieNode(void);
+ void insert(Trie** trie_root,char* word);
+ bool search(Trie* trie_root,char* word);
+ void printTrie(Trie* trie_root);
+ void destroy(Trie** trie_root);
+ */
 
+#include "stdtrie.h"
 #include <stdio.h>
-#include "stdlnsort.h"
 
 int main(int argc, const char * argv[]) {
-    int arr[] = {45,44,43,42,41};
-    radixSort(arr, 5);
-    print(arr, 5);
+    Trie* newTrie = init_trie();
+    insert(&newTrie, "cage");
+    insert(&newTrie, "abs");
+    insert(&newTrie, "bass");
+    insert(&newTrie, "cattle");
+    insert(&newTrie, "cat");
+    printTrie(newTrie);
+    
+    search(newTrie, "abs") ? printf("Found!\n") : printf("Not in Dictinary!\n");
+    destroyTrie(&newTrie);
+    
     return 0;
 }
